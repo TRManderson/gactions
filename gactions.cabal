@@ -1,0 +1,23 @@
+name:                 gactions
+version:              0.1.0.0
+synopsis:             Google Actions app
+-- description:
+-- license:
+-- license-file:
+homepage:             https://github.com/TRManderson/gactions
+author:               Tom Manderson
+maintainer:           me@trm.io
+category:             Web
+-- copyright:
+build-type:           Simple
+-- extra-source-files:
+cabal-version:        >=1.10
+
+executable gactions
+  main-is:              Main.hs
+  other-modules:        Actions
+                      , API
+  build-depends:        base >= 4.7 && < 5
+                      , aeson
+  hs-source-dirs:       src
+  default-language:     Haskell2010
