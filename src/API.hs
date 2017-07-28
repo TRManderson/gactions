@@ -309,23 +309,33 @@ instance FromJSON Action
 
 
 
-data ActionType = ActionType { name :: Text
+data ActionsType = ActionsType { name :: Text
                              , entities :: [Entity]
                              , isUserDefined :: Bool
                              } deriving (Eq, Generic)
-instance ToJSON ActionType
-instance FromJSON ActionType
+instance ToJSON ActionsType
+instance FromJSON ActionsType
 
 data Entity = Entity { key :: Text, syonyms :: [Text]} deriving (Eq, Generic)
 instance ToJSON Entity
 instance FromJSON Entity
 
-type ConversationFulfillment = Object
+data ConversationFulfillment = ConversationFulfillment { name :: Text
+                                                       , url :: Text
+                                                       , httpHeaders :: HashMap Text Textl
+                                                       , fulfillmentApiVersion :: Int
+                                                       } deriving (Eq, Generic)
+instance ToJSON ConversationFulfillment
+instance FromJSON ConversationFulfillment
+
 data ActionPackage = ActionPackage { manifest :: Manifest
                                    , accountLinking :: AccountLinking
                                    , actions :: [Action]
-                                   , types :: [ActionType]
+                                   , types :: [ActionsType]
                                    , conversations :: HashMap Text ConversationFulfillment
                                    }  deriving (Eq, Generic)
 instance ToJSON ActionPackage
 instance FromJSON ActionPackage
+
+
+data ActionType = ActionType
